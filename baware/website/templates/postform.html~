@@ -1,0 +1,7 @@
+<html>
+         <body>
+            <form action=/CrimeByLocation/ method="post">
+            Address: <input type = "text" name = "addr" value = ""> <br>
+            <input type = "submit" value = "Submit">
+         </body>
+        </html>

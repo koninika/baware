@@ -1,0 +1,20 @@
+<html>
+	<head><title>Crime Occurrence</title></head>
+	<body>
+	Crimes Reported at {{ address }} : <br><br>
+	Total Crimes: {{ total }} <br>
+		<table>
+			<tr>
+				<td><b>Crime</b></td>
+				<td><b>Occurences</b></td>
+			<tr>
+			<br><br>
+			{% for crime, count in crimes.items %}
+				<tr>
+					<td>{{ crime }}</td>
+					<td>{{ count }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>

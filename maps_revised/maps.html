@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>B Aware - Know Seattle Better</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/AdminLTE.min.css">
+    <link rel="stylesheet" href="css/maps.css">
+    <link rel="stylesheet" href="css/skins/skin-green.min.css">
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 60%;
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
+      }
+ 
+    </style>
+
+     <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Mushrooms', 3],
+          ['Onions', 1],
+          ['Olives', 1],
+          ['Zucchini', 1],
+          ['Pepperoni', 2]
+        ]);
+
+        // Set chart options
+        var options = {'title':'How Much Pizza I Ate Last Night',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('gauge'));
+        chart.draw(data, options);
+      }
+    </script>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["gauge"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Safety', 80],
+        ]);
+
+        var options = {
+          width: 175, height: 175,
+          greenFrom:80, greenTo: 100,
+          redFrom: 0, redTo: 50,
+          yellowFrom:50, yellowTo: 80,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('gauge'));
+
+        chart.draw(data, options);
+
+        setInterval(function() {
+          data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+          chart.draw(data, options);
+        }, 13000);
+        setInterval(function() {
+          data.setValue(1, 1, 40 + Math.round(60 * Math.random()));
+          chart.draw(data, options);
+        }, 5000);
+        setInterval(function() {
+          data.setValue(2, 1, 60 + Math.round(20 * Math.random()));
+          chart.draw(data, options);
+        }, 26000);
+      }
+    </script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+ <script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Type", "Complaints", { role: "style" } ],
+        ["Animal Complaints", 8, "blue"],
+        ["Auto Thefts", 10, "silver"],
+        ["Behaviorial Health", 19, "gold"],
+        ["Burglary", 21, "red"],
+        ["Car Prowl", 4, "yellow"],
+        ["Disturbances", 1, "green"],
+        ["False Alarm", 20, "orange"],
+        ["Fraud Calls", 12, "cyan"],
+        ["Hazards", 28, "pink"],
+        ["Liquor Voilations", 21, "color: #e5e4e2"],
+        ["Motor Collision", 6, "color: #FF9900"],
+        ["Narcotics", 24, "color: #00FFFF"],
+        ["Nuisance", 22, "color: #000099"],
+        ["TressPass", 9, "color: #FF3300"],
+        ["Suspicios Circumstances", 3, "color: #FF0066"],
+        ["Shoplifting", 25, "color: #0066FF"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+
+        title: "Crime in Seattle 2010 - 2015",   
+        bar: {groupWidth: "80%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("bar_chart"));
+      chart.draw(view, options);
+  }
+  </script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+   google.load('visualization', '1', {packages: ['line']});
+google.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Year');
+      data.addColumn('number', 'Crime');
+
+      data.addRows([
+        [2010,45],[2011,764],[2012,1290],[2013,657],[2014,577],[2015,822]
+      ]);
+
+      var options = {
+
+       chart: {
+          title: 'Trend Analysis over the years 2010 - 2015',
+        },
+        hAxis: {
+          title: 'Year'
+        },
+        vAxis: {
+          title: 'Crime'
+        }
+      };
+
+      var chart = new google.charts.Line(document.getElementById('linechart_material'));
+
+      chart.draw(data, options);
+    }
+  </script>
+  <script>
+  // Note: This example requires that you consent to location sharing when
+  // prompted by your browser. If you see the error "The Geolocation service
+  // failed.", it means you probably did not give permission for the browser to
+  // locate you.
+
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 47.60, lng: -122.644},
+      zoom: 6
+    });
+    var myLatLng = {lat: 47.60, lng: -122.644};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: myLatLng
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Hello World!'
+  });
+  marker.setMap(map);
+}
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs6jcTLPxmz4BhO84_yTq3Iiw9F1f5RKA&signed_in=true&callback=initMap"
+          async defer>
+      </script>
+
+  </head>
+  <body class="hold-transition skin-green layout-top-nav ">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><b>B A</b>ware</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <!--  <form class="navbar-form navbar-right">
+              <div class="form-group">
+                <input type="text" placeholder="Email" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="password" placeholder="Password" class="form-control">
+              </div>
+              <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+          </div><!--/.navbar-collapse -->
+        </div>
+      </div>
+    </nav>
+      <!--<div class="row">
+        .
+        <img class="img-responsive" class="jumbotron" src="img/background.jpg" />
+      </div>
+    
+    <!-- Header Navbar: style can be found in header.less -->.
+    <div class="container" >
+      <div class="row" style="margin-top:5%">
+        
+        <div style="margin:0 0 10px 66px" class="col-xs-12">
+          <div class="input-group">
+            
+            <input type="text" style="width:300px;float:left;margin-right:5px;" class="form-control" placeholder="Address" aria-describedby="basic-addon1"></input>
+            <div style="font-size: 1.4em;margin-left:5px" class="glyphicon glyphicon-search"></div>  
+            <input type="text" style="width:200px;float:left" style:"margin-left:5px;" class="form-control" placeholder="Time" aria-describedby="basic-addon1"></input><!--<div class="glyphicon glyphicon-map-marker"  ></div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="map" style:"width: 600px; height : 600px;margin-bottom:10px"> </div>
+    <br>
+    <br>
+    <div class="container" style:"margin-top: 10px">
+      <div class="col-xs-6">
+         <div id="bar_chart"></div>
+      </div>  
+      <div class="col-xs-5">
+         <div id="linechart_material"></div>
+      </div>  
+    </div>
+
+
+    
+    <br>
+    <br>
+    <div  class="container">
+      <div  class="row">
+         <div class="col-xs-1">
+
+        </div>
+         <div class="col-xs-2">
+          <div id="gauge"></div>
+        </div>
+
+        <div class="col-xs-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Seattle Safety Tips
+            </div>
+            <div class="panel-body"> 
+      
+              <p>The crime rate in this area is extremely high at night.<br>Car theft increases by the night.<br>Avoid going in this area at night by a car.</p>
+              <hr>
+              <p>However it is safe to visit the area at the mentioned time.</p>
+            </div>
+          </div>
+        </div>  
+        <div class="col-xs-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Near By Services:
+            </div>
+            <div class="panel-body"> 
+
+              <p><b>Fire Station:</b> Dock 3, 1735 W Thurman St, Seattle, WA 98199</p>
+              <p><b>Distance:</b> 3 .5 miles</p><hr></li>
+              <p><b>Police Station:</b> 2300 SW Webster St, Seattle, WA 98106</p>
+              <p><b>Distance:</b> 5 miles</p><hr></li>
+              <p><b>Hospital: </b>800 Sand Point Way NE, Seattle, WA 98105</p>
+              <p><b>Distance:</b> 1 .5 miles</p>
+
+            </div>
+          </div>
+        </div>  
+      </div>
+
+    </div>
+    
+    <footer style:"padding - top: 20px;">B Aware : Safety Query Services Based on 911 Reports</footer>
+  </body>
+</html>
